@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Wall
+  - Door
+  - Obstacle
+  - Monster
+  - Bullet
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Wall
+  - Water
+  - UI
+  - Room
+  - Door
+  - Bullet
+  - Monster
+  - Player
+  - Pickup
+  - Obstacle
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Wall
+    uniqueID: 3073718661
+    locked: 0
+  - name: Room
+    uniqueID: 4206527215
+    locked: 0
+  - name: Door
+    uniqueID: 3393679835
+    locked: 0
+  - name: Anemy
+    uniqueID: 4247624573
+    locked: 0
+  - name: Obstacle
+    uniqueID: 699638141
+    locked: 0
+  - name: Player
+    uniqueID: 928060443
+    locked: 0
+  - name: Bullet
+    uniqueID: 3621034141
+    locked: 0
+  - name: Pickup
+    uniqueID: 3918707657
+    locked: 0
