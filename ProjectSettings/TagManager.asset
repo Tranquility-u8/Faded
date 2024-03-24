@@ -9,6 +9,8 @@ TagManager:
   - Obstacle
   - Monster
   - Bullet
+  - platform
+  - enemys
   layers:
   - Default
   - TransparentFX
@@ -72,4 +74,7 @@ TagManager:
     locked: 0
   - name: Pickup
     uniqueID: 3918707657
+    locked: 0
+  - name: Light
+    uniqueID: 1377954501
     locked: 0
