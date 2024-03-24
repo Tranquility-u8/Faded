@@ -25,7 +25,7 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
-        damage = player.damage;
+        damage = player.baseDamage;
     }
 
     public void OnTriggerEnter2D(Collider2D collision)

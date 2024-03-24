@@ -43,7 +43,7 @@ public class Barrel : Obstacle
     public override void OnDestoryed()
     {
         isDestroyed = true;
-       // animator.Play("destroy");
+        animator.Play("destroy");
         coinPool.OnRelease();
     }
 

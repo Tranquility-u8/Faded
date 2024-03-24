@@ -55,6 +55,9 @@ TagManager:
   - name: Door
     uniqueID: 3393679835
     locked: 0
+  - name: Shadow
+    uniqueID: 3812653387
+    locked: 0
   - name: Anemy
     uniqueID: 4247624573
     locked: 0

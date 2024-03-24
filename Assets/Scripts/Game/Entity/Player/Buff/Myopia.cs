@@ -4,15 +4,31 @@ using UnityEngine;
 
 public class Myopia : BuffBase
 {
-    // Start is called before the first frame update
-    void Start()
+    public static Myopia instance;
+
+    private void Awake()
     {
-        
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Timer();
+    }
+
+    private void OnApplicationQuit()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
     }
 }

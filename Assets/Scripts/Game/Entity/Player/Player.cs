@@ -31,10 +31,18 @@ public class Player : Entity, IAttackable, IDamageable
     [Header("Appear")]
     private bool isAppear = false;
 
+    [Header("Buff")]
+    public BuffPool buffPool;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+
     }
 
     void Update()
@@ -98,12 +106,28 @@ public class Player : Entity, IAttackable, IDamageable
 
     }
 
-    //Damaged
-    public override void TakeDamage(float damage)
+    public void calculateDamage()
+    {
+        float tmp = baseDamage;
+        if (buffPool.checkBuff("Myopia"))
+        {
+            tmp *= 1.5f;
+        }
+        actualDamage = tmp;
+    }
+
+    public void calculateDefense()
+    {
+        float tmp = baseDefense;
+        actualDefense = tmp;
+    }
+
+    //TakeDamage
+    public override void TakeDamage(float actualDamage)
     {
         if (isVulnerable) return;
      
-        currHealth -= Mathf.Max((damage - defense), 0);
+        currHealth -= Mathf.Max((actualDamage - actualDefense), 0);
         if (currHealth < 0)
         {
             OnDead();

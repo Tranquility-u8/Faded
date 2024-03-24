@@ -15,8 +15,10 @@ public abstract class Entity: MonoBehaviour
     public Vector2 position;
 
     [Header("Battle")]
-    public float damage;
-    public float defense;
+    public float baseDamage;
+    public float actualDamage;
+    public float baseDefense;
+    public float actualDefense;
 
     public bool isVulnerable;
     public float vulnerableDuration;

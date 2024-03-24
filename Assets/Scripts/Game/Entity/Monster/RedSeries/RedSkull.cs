@@ -64,9 +64,9 @@ public class RedSkull : MonsterBase
         throw new System.NotImplementedException();
     }
 
-    public override void TakeDamage(float damage)
+    public override void TakeDamage(float actualDamage)
     {
-        currHealth -= Mathf.Max((damage - defense), 0);
+        currHealth -= Mathf.Max((actualDamage - actualDefense), 0);
         if (currHealth < 0)
         {
             OnDead();
@@ -77,7 +77,7 @@ public class RedSkull : MonsterBase
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            GameManager.instance.player.TakeDamage(damage);
+            GameManager.instance.player.TakeDamage(baseDamage);
         }
     }
 

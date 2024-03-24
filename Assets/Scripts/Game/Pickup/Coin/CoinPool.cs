@@ -43,10 +43,10 @@ public class CoinPool : MonoBehaviour
     {
         foreach(var coin in coins)
         {
-            float vx = Random.Range(-1f, 1f);
-            float vy = Random.Range(-1f, 1f);
+            float vx = Random.Range(-1f, 1f) * 50;
+            float vy = Random.Range(-1f, 1f) * 50;
             coin.SetActive(true);
-            coin.GetComponent<Rigidbody2D>().velocity = new Vector3(vx, vy, 0);
+            coin.GetComponent<Rigidbody2D>().AddForce(new Vector2(vx, vy));
         }
     }
 

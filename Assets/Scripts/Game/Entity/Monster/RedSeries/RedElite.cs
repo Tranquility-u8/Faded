@@ -8,39 +8,63 @@ using UnityEngine.AI;
 public class RedElite : MonsterBase
 {
 
-    [SerializeField] protected NavMeshAgent agent;
+    [SerializeField] private NavMeshAgent agent;
+
+    [Header("Melee")]
+    [SerializeField] private float meleeRange;
+    
+    private bool isAttacking = false;
+    private float disance = 20;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+        agent = GetComponent<NavMeshAgent>();
+    }
 
     private void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+
         agent.updateRotation = false;
         agent.updateUpAxis = false;
-
+        agent.speed = speed;
         target = GameManager.instance.player.transform;
     }
 
     void Update()
     {
-        if (Vector3.Distance(transform.position, target.position) <= alertRadius)
+        if (!isAlive) return;
+
+        disance = Vector3.Distance(transform.position, target.position);
+        if(disance <= alertRadius)
+        {
             isAlert = true;
+        }
+        else
+        {
+            isAlert = false;
+        }
+        animator.SetBool("isAlert", isAlert);
+    
+        if(disance <= meleeRange && !isAttacking)
+        {
+            isAttacking = true;
+            StartCoroutine(TryAttack());
+        }
     }
 
     private void FixedUpdate()
     {
+        if (!isAlive) return;
+
         Move();
     }
 
-    public override void attack()
-    {
-        throw new System.NotImplementedException();
-    }
 
     public override void Move()
     {
-        if (isAlert) {
+        if (isAlert && !isAttacking) {
             agent.SetDestination(target.position);
-
-            //animator.Play("pursue");
             float dx = agent.steeringTarget.x - transform.position.x;
             int dir = dx > 0 ? 1 : -1;
             transform.localScale = new Vector3(dir, 1, 1);
@@ -51,7 +75,8 @@ public class RedElite : MonsterBase
 
     public override void OnDead()
     {
-        throw new System.NotImplementedException();
+        animator.Play("death");
+        isAlive = false;
     }
 
     public override void OnVulnerable()
@@ -59,21 +84,34 @@ public class RedElite : MonsterBase
         throw new System.NotImplementedException();
     }
 
-    public override void TakeDamage(float damage)
+    public override void TakeDamage(float actualDamage)
     {
-        currHealth -= Mathf.Max((damage - defense), 0);
+        currHealth -= Mathf.Max((actualDamage - actualDefense), 0);
         if (currHealth < 0)
         {
             OnDead();
         }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
+        else
         {
-            GameManager.instance.player.TakeDamage(damage);
+            animator.SetTrigger("OnHurt");
         }
     }
+
+    IEnumerator TryAttack()
+    {
+        animator.SetTrigger("OnAttack");
+        yield return new WaitForSeconds(0.75f);
+        if(disance < meleeRange)
+        {
+            attack();
+        }
+        isAttacking = false;
+    }
+
+    public override void attack()
+    {
+        GameManager.instance.player.TakeDamage(actualDamage);
+    }
+
 
 }

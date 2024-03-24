@@ -47,16 +47,16 @@ public static class Constants
         };
 
     //Buff
-    public static Dictionary<string, int> buffDictionary = new Dictionary<string, int>()
+    public static Dictionary<int, string> buffDictionary = new Dictionary<int, string>()
         {
-            {"AbnormalVision", 0},
-            {"Quadricolorist", 1 },
-            {"Blindness", 2 },
-            {"Daltonism", 3 },
-            {"Aphantasia", 4 },
-            {"Photodynia", 5 },
-            {"Myopia", 6 },
-            {"Hyperopia", 7 },
+            {0, "AbnormalVision"},
+            {1, "Quadricolorist"},
+            {2, "Blindness"},
+            {3, "Daltonism"},
+            {4, "Aphantasia"},
+            {5, "Photodynia"},
+            {6, "Myopia"},
+            {7, "Hyperopia"},
         };
 
     //Keyboard
