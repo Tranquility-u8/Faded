@@ -14,6 +14,8 @@ public class Bullet : MonoBehaviour
 
     [SerializeField] private float damage;
 
+    private AudioSource audioSource;
+
     void Awake()
     {
         player = GameManager.instance.player;
@@ -21,6 +23,7 @@ public class Bullet : MonoBehaviour
 
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -40,11 +43,12 @@ public class Bullet : MonoBehaviour
                 //Debug.Log(collision.gameObject);
                 //Debug.Log("Hit monster");
                 OnHit();
+                //audioSource.Play();
             }
         }     
         else if (collision.gameObject.CompareTag("Obstacle"))
         {
-            collision.gameObject.GetComponent<Obstacle>().TakeDamage(damage);
+            collision.gameObject.GetComponent<Obstacle>()?.TakeDamage(damage);
             if (!player.isPenetrate)
             {
                 //Debug.Log(collision.gameObject);

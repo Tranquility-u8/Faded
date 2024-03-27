@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 using NavMeshPlus.Components;
 
@@ -33,8 +34,15 @@ public class DungeonManager : MonoBehaviour
 
     void Update()
     {
-        testDoor();
-        testHurt();
+        //testGame();
+    }
+
+    void testGame()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
     void testDoor()
@@ -42,14 +50,6 @@ public class DungeonManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             currRoom.openDoors();
-        }
-    }
-
-    void testHurt()
-    {
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            GameManager.instance.player.TakeDamage(10);
         }
     }
 
@@ -61,6 +61,7 @@ public class DungeonManager : MonoBehaviour
     public void downStair()
     {
         Debug.Log("down stair...");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void OnApplicationQuit()

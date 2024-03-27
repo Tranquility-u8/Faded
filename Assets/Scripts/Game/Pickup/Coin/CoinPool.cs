@@ -48,6 +48,7 @@ public class CoinPool : MonoBehaviour
             coin.SetActive(true);
             coin.GetComponent<Rigidbody2D>().AddForce(new Vector2(vx, vy));
         }
+        AudioManager.instance.InCoins();
     }
 
 }

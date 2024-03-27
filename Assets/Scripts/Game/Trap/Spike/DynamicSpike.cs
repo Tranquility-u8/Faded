@@ -20,6 +20,11 @@ public class DynamicSpike : SpikeBase
         animator = GetComponent<Animator>();
     }
 
+    private void Start()
+    {
+        SetUpSpike();
+    }
+
     private void SetUpSpike()
     {
         if (!isActivated)

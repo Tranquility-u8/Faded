@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using NavMeshPlus.Components; 
 
 
-public class ColliderSeparatorEditor : MonoBehaviour
+/*public class ColliderSeparatorEditor : MonoBehaviour
 {
     [MenuItem("Tools/Separate Colliders and Add NavMeshModifier")]
     static void SeparateCollidersAndAddNavMeshModifier()
@@ -45,3 +45,4 @@ public class ColliderSeparatorEditor : MonoBehaviour
         }
     }
 }
+*/

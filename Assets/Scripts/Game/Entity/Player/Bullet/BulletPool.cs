@@ -20,7 +20,7 @@ public class BulletPool : MonoBehaviour
             instance.transform.position = player.transform.position;
             return instance;
         }
-        instance = Instantiate(bulletPrefab, player.transform.position, Quaternion.identity);
+        instance = Instantiate(bulletPrefab, this.transform.position, Quaternion.identity);
         return instance;
     }
 

@@ -60,7 +60,11 @@ public abstract class RoomBase : MonoBehaviour
             player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 3f);
         }
         if (!isCleaned)
+        {
             closeDoors();
+        }
+
+
     }
 
     public abstract void beCleaned();
@@ -70,7 +74,9 @@ public abstract class RoomBase : MonoBehaviour
         foreach (var door in doors)
         {
             door.GetComponent<Door>().openDoor();
+
         }
+        AudioManager.instance.inOpenDoor();
     }
 
     public void closeDoors()
@@ -79,5 +85,6 @@ public abstract class RoomBase : MonoBehaviour
         {
             door.GetComponent<Door>().closeDoor();
         }
+        AudioManager.instance.inCloseDoor();
     }
 }

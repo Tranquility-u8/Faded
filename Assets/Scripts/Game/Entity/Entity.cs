@@ -26,6 +26,9 @@ public abstract class Entity: MonoBehaviour
     [Header("Animation")]
     public Animator animator;
 
+    [Header("SpriteRenderer")]
+    public SpriteRenderer sprite;
+
     public abstract void Move();
     public abstract void TakeDamage(float damage);
 

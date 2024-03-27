@@ -54,11 +54,6 @@ public class RedSkull : MonsterBase
         }
     }
 
-    public override void OnDead()
-    {
-        throw new System.NotImplementedException();
-    }
-
     public override void OnVulnerable()
     {
         throw new System.NotImplementedException();

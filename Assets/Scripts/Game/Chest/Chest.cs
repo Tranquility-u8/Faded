@@ -6,18 +6,24 @@ using UnityEngine;
 public class Chest : MonoBehaviour, IInteractive
 {
 
+    
+
     [SerializeField] private bool isAround = false;
     [SerializeField] private bool isOpen = false;
 
-    [SerializeField] private Animator animator;
+    private Animator animator;
 
     [SerializeField] private CoinPool coinPool;
     [SerializeField] private ItemBase item;
-    
+
+    [SerializeField] private int maxValue;
+
+    private AudioSource audioSource;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Start()
@@ -41,7 +47,7 @@ public class Chest : MonoBehaviour, IInteractive
     IEnumerator SetUpCoinPool()
     {
         yield return null;
-        int totalVal = Random.Range(1, 20);
+        int totalVal = Random.Range(1, maxValue);
         int gold = totalVal / Constants.COIN_VALUES[2];
         totalVal %= Constants.COIN_VALUES[2];
         int silver = totalVal / Constants.COIN_VALUES[1];
@@ -63,6 +69,7 @@ public class Chest : MonoBehaviour, IInteractive
             coinPool.OnRelease();
             animator.Play("open");
             isOpen = true;
+            audioSource.Play();
             //Debug.Log("open the chest");
         }
     }

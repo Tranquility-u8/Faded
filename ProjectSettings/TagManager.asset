@@ -25,7 +25,7 @@ TagManager:
   - Player
   - Pickup
   - Obstacle
-  - 
+  - Flying Monster
   - 
   - 
   - 
@@ -60,20 +60,11 @@ TagManager:
   - name: Shadow
     uniqueID: 3812653387
     locked: 0
-  - name: Anemy
-    uniqueID: 4247624573
-    locked: 0
   - name: Obstacle
     uniqueID: 699638141
     locked: 0
-  - name: Player
+  - name: Entity
     uniqueID: 928060443
-    locked: 0
-  - name: Bullet
-    uniqueID: 3621034141
-    locked: 0
-  - name: Pickup
-    uniqueID: 3918707657
     locked: 0
   - name: Light
     uniqueID: 1377954501

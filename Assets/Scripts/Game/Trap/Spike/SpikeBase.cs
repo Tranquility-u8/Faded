@@ -19,6 +19,7 @@ public class SpikeBase : MonoBehaviour, IAttackable
         if (collision.gameObject.CompareTag("Player"))
         {
             attack();
+            AudioManager.instance.inSpike();
         }
     }
 

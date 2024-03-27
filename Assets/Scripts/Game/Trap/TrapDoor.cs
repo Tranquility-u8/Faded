@@ -17,17 +17,13 @@ public class TrapDoor : MonoBehaviour, IInteractive
     private void Update()
     {
         //test
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            openDoor();
-        }
-        if(!isOpen)
-            OnInteract();
+        OnInteract();
     }
 
     public void openDoor()
     {
         animator.Play("open");
+        AudioManager.instance.inOpenDoor();
         isOpen = true;
     }
 
@@ -44,10 +40,9 @@ public class TrapDoor : MonoBehaviour, IInteractive
 
     public void OnInteract()
     {
-        if (isOnDoor && Input.GetKeyDown(KeyCode.Return))
+        if (isOpen && isOnDoor && Input.GetKeyDown(KeyCode.Return))
         {
             DungeonManager.instance.downStair();
-            isOpen = true;
         }
     }
 }
