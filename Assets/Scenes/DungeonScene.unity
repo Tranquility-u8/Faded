@@ -6437,8 +6437,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.009150028, y: 0.016499996, z: 0}
-    m_Extent: {x: 8.228451, y: 5.8312, z: 0}
+    m_Center: {x: -0.008950233, y: 0.01695013, z: 0}
+    m_Extent: {x: 8.22845, y: 5.83145, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -7030,9 +7030,17 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 227591109080483055, guid: d967395f5ae604a43b27cbdf6fd7af9a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 593514e8787190f4c9bdc11ed529726d, type: 3}
+    - target: {fileID: 227591109080483055, guid: d967395f5ae604a43b27cbdf6fd7af9a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 777779040}
+    - target: {fileID: 4993611004417273110, guid: d967395f5ae604a43b27cbdf6fd7af9a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.441
+      objectReference: {fileID: 0}
     - target: {fileID: 5401940225838565418, guid: d967395f5ae604a43b27cbdf6fd7af9a, type: 3}
       propertyPath: speed
       value: 9
