@@ -3674,7 +3674,7 @@ MonoBehaviour:
   bossRoomTemplates:
   - {fileID: 2184995116647676606, guid: 90eef5eff030d6847891e0c383126ef8, type: 3}
   - {fileID: 2184995116647676606, guid: c5d12cd62391b234aad2c611240215b5, type: 3}
-  totalRoomNum: 24
+  totalRoomNum: 5
   startRoom: {fileID: 0}
   bossRoom: {fileID: 2184995116063345123, guid: 90eef5eff030d6847891e0c383126ef8, type: 3}
   rooms: []
@@ -6177,7 +6177,7 @@ MonoBehaviour:
   m_Intensity: 0.2
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 853935b7ef82bafa7da1b3294b7940e3c5ea215200000000db7147ca1b145137
+  m_ApplyToSortingLayers: 853935b7ef82bafa4b7940e3c5ea215200000000db7147ca1b145137e3d0199c
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -6423,7 +6423,7 @@ MonoBehaviour:
   m_Intensity: 0.6
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 853935b7ef82bafa7da1b3294b7940e3c5ea215200000000db7147ca
+  m_ApplyToSortingLayers: 853935b7ef82bafa4b7940e3c5ea215200000000db7147cae3d0199c
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -6437,8 +6437,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.008950233, y: 0.01695013, z: 0}
-    m_Extent: {x: 8.22845, y: 5.83145, z: 0}
+    m_Center: {x: -0.008299828, y: 0.016899824, z: 0}
+    m_Extent: {x: 8.229, y: 5.8299, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -7030,36 +7030,20 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 227591109080483055, guid: d967395f5ae604a43b27cbdf6fd7af9a, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 593514e8787190f4c9bdc11ed529726d, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 227591109080483055, guid: d967395f5ae604a43b27cbdf6fd7af9a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 777779040}
-    - target: {fileID: 4993611004417273110, guid: d967395f5ae604a43b27cbdf6fd7af9a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.441
-      objectReference: {fileID: 0}
-    - target: {fileID: 5401940225838565418, guid: d967395f5ae604a43b27cbdf6fd7af9a, type: 3}
-      propertyPath: speed
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 5401940225838565418, guid: d967395f5ae604a43b27cbdf6fd7af9a, type: 3}
-      propertyPath: maxHealth
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 5401940225838565418, guid: d967395f5ae604a43b27cbdf6fd7af9a, type: 3}
-      propertyPath: currHealth
-      value: 150
-      objectReference: {fileID: 0}
     - target: {fileID: 9060226307732869872, guid: d967395f5ae604a43b27cbdf6fd7af9a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.99
+      value: 3.093
       objectReference: {fileID: 0}
     - target: {fileID: 9060226307732869872, guid: d967395f5ae604a43b27cbdf6fd7af9a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.97
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9060226307732869872, guid: d967395f5ae604a43b27cbdf6fd7af9a, type: 3}
       propertyPath: m_LocalPosition.z

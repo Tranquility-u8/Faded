@@ -4,37 +4,52 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
-public class Bat : MonsterBase
+public class RedSkeleton : MonsterBase
 {
+
+    private NavMeshAgent agent;
 
     [Header("Melee")]
     [SerializeField] private float meleeRange;
-
     private bool isAttacking = false;
     private float disance = 20;
 
-    private void Awake()
-    {
-        animator = GetComponent<Animator>();
-        sprite = GetComponent<SpriteRenderer>();
+    [Header("Audio")]
+    private AudioSource walkAudio;
 
-        audioSource = GetComponent<AudioSource>();
+    protected override void Awake()
+    {
+        base.Awake();
+
+        agent = GetComponent<NavMeshAgent>();
+        var audioSources = GetComponents<AudioSource>();
+        audioSource = audioSources[0];
+        walkAudio = audioSources[1];
+
         audioSource.clip = AudioManager.instance.hitClip;
+        walkAudio.clip = AudioManager.instance.skeletonWalkClip;
     }
 
     private void Start()
     {
+
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+        agent.speed = speed;
+        
         target = GameManager.instance.player.transform;
+
+        walkAudio.Play();
     }
 
-    void Update()
+    protected override void Update()
     {
-        sprite.sortingOrder = Mathf.RoundToInt(transform.position.y * -100);
+        base.Update();
 
         if (!isAlive) return;
 
         disance = Vector3.Distance(transform.position, target.position);
-        if (disance <= alertRadius)
+        if(disance <= alertRadius)
         {
             isAlert = true;
         }
@@ -43,8 +58,8 @@ public class Bat : MonsterBase
             isAlert = false;
         }
         animator.SetBool("isAlert", isAlert);
-
-        if (disance <= meleeRange && !isAttacking)
+    
+        if(disance <= meleeRange && !isAttacking)
         {
             isAttacking = true;
             StartCoroutine(TryAttack());
@@ -61,13 +76,13 @@ public class Bat : MonsterBase
 
     public override void Move()
     {
-        if (isAlert && !isAttacking)
-        {
-            //agent.SetDestination(target.position);
-            transform.position = Vector3.MoveTowards(transform.position, target.position, Time.fixedDeltaTime * speed);
-            float dx = target.transform.position.x - transform.position.x;
+        if (isAlert && !isAttacking) {
+            agent.SetDestination(target.position);
+            float dx = agent.steeringTarget.x - transform.position.x;
             int dir = dx > 0 ? 1 : -1;
             transform.localScale = new Vector3(dir, 1, 1);
+
+            walkAudio.Play();
         }
         //animator.Play("Idle");
     }
@@ -82,7 +97,9 @@ public class Bat : MonsterBase
         currHealth -= Mathf.Max((actualDamage - actualDefense), 0);
         if (currHealth < 0 && isAlive)
         {
+            walkAudio.Stop();
             OnDead();
+           
         }
         else
         {
@@ -95,7 +112,7 @@ public class Bat : MonsterBase
     {
         animator.SetTrigger("OnAttack");
         yield return new WaitForSeconds(0.75f);
-        if (disance < meleeRange)
+        if(disance < meleeRange)
         {
             attack();
         }

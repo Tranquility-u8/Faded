@@ -104,9 +104,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 928060443
-  m_SortingLayer: 6
+  m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e3e56a8b087ffb74eaa61630b48e05e9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 593514e8787190f4c9bdc11ed529726d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -116,7 +116,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!61 &3953043912563659716
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -153,7 +153,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.53125, y: 1.53125}
+    oldSize: {x: 1.5, y: 1.5}
     newSize: {x: 2.5, y: 2.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -201,10 +201,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddd14ef86301ecc4eafb7150cd41c9fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currHealth: 100
+  maxHealth: 150
+  currHealth: 150
   isAlive: 1
-  speed: 10
+  speed: 9
   speedVec: {x: 0, y: 0, z: 0}
   position: {x: 0, y: 0}
   baseDamage: 15
@@ -405,8 +405,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.016250014, y: -10.656, z: 0}
-    m_Extent: {x: 3.61595, y: 10.9454, z: 0}
+    m_Center: {x: -0.01609993, y: -10.6567, z: 0}
+    m_Extent: {x: 3.6152, y: 10.945801, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -523,7 +523,7 @@ Transform:
   m_GameObject: {fileID: 6938172209295327963}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.59, z: 0}
+  m_LocalPosition: {x: 0, y: -0.441, z: 0}
   m_LocalScale: {x: 2.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -647,8 +647,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.00049996376, y: 0.00034999847, z: 0}
-    m_Extent: {x: 2.5002, y: 2.49985, z: 0}
+    m_Center: {x: -0.0000500679, y: 0.000049948692, z: 0}
+    m_Extent: {x: 2.50035, y: 2.50075, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0

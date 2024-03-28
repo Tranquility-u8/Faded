@@ -15,13 +15,15 @@ public class DynamicSpike : SpikeBase
     [SerializeField] private float offTimeout = 1;
 
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         animator = GetComponent<Animator>();
     }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         SetUpSpike();
     }
 
@@ -56,9 +58,5 @@ public class DynamicSpike : SpikeBase
         yield return new WaitForSeconds(offTimeout);
         if(!isStop)
             StartCoroutine(OnAnim());
-    }
-    void Update()
-    {
-        
     }
 }

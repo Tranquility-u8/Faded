@@ -15,8 +15,8 @@ public abstract class MonsterBase : Entity, IAttackable, IDamageable
     [SerializeField] protected float alertRadius;
 
     protected AudioSource audioSource;
-
     public MonsterType type;
+
 
     public abstract void attack();
 

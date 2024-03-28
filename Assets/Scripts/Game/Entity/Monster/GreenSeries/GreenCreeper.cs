@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class Spider : MonsterBase
 {
 
-    [SerializeField] private NavMeshAgent agent;
+    private NavMeshAgent agent;
 
     [Header("Melee")]
     [SerializeField] private float meleeRange;
@@ -19,12 +19,11 @@ public class Spider : MonsterBase
     [SerializeField] private Transform point1;
     [SerializeField] private Transform point2;
 
-    [SerializeField] private bool isFirst;
+    private bool isFirst;
 
-    private void Awake()
+    protected override void Awake()
     {
-        animator = GetComponent<Animator>();
-        sprite = GetComponent<SpriteRenderer>();
+        base.Awake();
 
         agent = GetComponent<NavMeshAgent>();
         audioSource = GetComponent<AudioSource>();
@@ -40,9 +39,9 @@ public class Spider : MonsterBase
         target = GameManager.instance.player.transform;
     }
 
-    void Update()
+    protected override void Update()
     {
-        sprite.sortingOrder = Mathf.RoundToInt(transform.position.y * -100);
+        base.Update();
 
         if (!isAlive) return;
 

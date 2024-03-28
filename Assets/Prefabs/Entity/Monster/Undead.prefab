@@ -273,29 +273,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 1320161691197893277}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 602e1e12365578049bd9971f7770d7f5, type: 3}
+  m_Script: {fileID: 11500000, guid: 74d2a3d8e5c72ae4ea8bd9f0e5de5d13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1000
   currHealth: 1000
   isAlive: 1
-  speed: 8
+  speed: 5
   speedVec: {x: 0, y: 0, z: 0}
   position: {x: 0, y: 0}
-  baseDamage: 25
-  actualDamage: 25
-  baseDefense: 5
-  actualDefense: 5
+  baseDamage: 30
+  actualDamage: 30
+  baseDefense: 0
+  actualDefense: 0
   isVulnerable: 0
   vulnerableDuration: 0
   animator: {fileID: 0}
   sprite: {fileID: 0}
   target: {fileID: 0}
   isAlert: 0
-  alertRadius: 10
+  alertRadius: 15
   type: 0
   agent: {fileID: 0}
-  meleeRange: 3.5
+  meleeRange: 3
 --- !u!82 &5976413742957741384
 AudioSource:
   m_ObjectHideFlags: 0

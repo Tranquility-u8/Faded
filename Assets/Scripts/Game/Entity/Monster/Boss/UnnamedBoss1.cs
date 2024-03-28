@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
-public class Undead : MonsterBase
+public class UnnamedBoss1 : MonsterBase
 {
 
     [SerializeField] private NavMeshAgent agent;
@@ -15,10 +15,9 @@ public class Undead : MonsterBase
     private bool isAttacking = false;
     private float disance = 20;
 
-    private void Awake()
+    protected override void Awake()
     {
-        animator = GetComponent<Animator>();
-        sprite = GetComponent<SpriteRenderer>();
+        base.Awake();
 
         agent = GetComponent<NavMeshAgent>();
         audioSource = GetComponent<AudioSource>();
@@ -30,6 +29,7 @@ public class Undead : MonsterBase
         agent.updateRotation = false;
         agent.updateUpAxis = false;
         agent.speed = speed;
+
         target = GameManager.instance.player.transform;
     }
 
@@ -43,10 +43,9 @@ public class Undead : MonsterBase
         UIManager.instance.disableBossHpBar();
     }
 
-    void Update()
+    protected override void Update()
     {
-
-        sprite.sortingOrder = Mathf.RoundToInt(transform.position.y * -100);
+        base.Update();
 
         if (!isAlive) return;
 

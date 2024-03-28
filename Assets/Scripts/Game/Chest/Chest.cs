@@ -8,28 +8,35 @@ public class Chest : MonoBehaviour, IInteractive
 
     
 
-    [SerializeField] private bool isAround = false;
-    [SerializeField] private bool isOpen = false;
+    private bool isAround = false;
+    private bool isOpen = false;
 
     private Animator animator;
+    private SpriteRenderer sprite;
 
+    [Header("Coin")]
     [SerializeField] private CoinPool coinPool;
-    [SerializeField] private ItemBase item;
-
     [SerializeField] private int maxValue;
 
+    [Header("Item")]
+    [SerializeField] private ItemBase item;
+
+    [Header("Audio")]
     private AudioSource audioSource;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     void Start()
     {
         animator.Play("idle");
         SetUpChest();
+
+        sprite.sortingOrder = Mathf.RoundToInt(transform.position.y * -100);
     }
 
     void Update()

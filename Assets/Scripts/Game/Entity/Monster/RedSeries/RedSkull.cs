@@ -4,54 +4,71 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
-/* A melee red monster */
 public class RedSkull : MonsterBase
 {
 
-    [SerializeField] private bool isAround = false;
-    [SerializeField] private float aroundRadius;
+    [Header("Melee")]
+    [SerializeField] private float meleeRange;
+
+    private bool isAttacking = false;
+    private float disance = 20;
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = AudioManager.instance.hitClip;
+    }
 
     private void Start()
     {
-        isAlert = true;
         target = GameManager.instance.player.transform;
     }
 
-    void Update()
+    protected override void Update()
     {
-        if (Vector3.Distance(transform.position, target.position) <= aroundRadius)
-            isAround = true;
+        base.Update();
+
+        if (!isAlive) return;
+
+        disance = Vector3.Distance(transform.position, target.position);
+        if (disance <= alertRadius)
+        {
+            isAlert = true;
+        }
+        else
+        {
+            isAlert = false;
+        }
+        animator.SetBool("isAlert", isAlert);
+
+        if (disance <= meleeRange && !isAttacking)
+        {
+            isAttacking = true;
+            StartCoroutine(TryAttack());
+        }
     }
 
     private void FixedUpdate()
     {
+        if (!isAlive) return;
+
         Move();
     }
 
-    public override void attack()
-    {
-        throw new System.NotImplementedException();
-    }
 
     public override void Move()
     {
-        if (isAlert)
+        if (isAlert && !isAttacking)
         {
-            animator.Play("pursue");
-            if (isAround)
-            {
-                transform.RotateAround(target.transform.position, new Vector3(0, 0, 1), speed / aroundRadius);
-            }
-            else
-            {
-                Vector3.MoveTowards(transform.position, target.position, speed * Time.fixedDeltaTime);
-            }
-            
+            //agent.SetDestination(target.position);
+            transform.position = Vector3.MoveTowards(transform.position, target.position, Time.fixedDeltaTime * speed);
+            float dx = target.transform.position.x - transform.position.x;
+            int dir = dx > 0 ? 1 : -1;
+            transform.localScale = new Vector3(dir, 1, 1);
         }
-        else
-        {
-            animator.Play("Idle");
-        }
+        //animator.Play("Idle");
     }
 
     public override void OnVulnerable()
@@ -62,18 +79,32 @@ public class RedSkull : MonsterBase
     public override void TakeDamage(float actualDamage)
     {
         currHealth -= Mathf.Max((actualDamage - actualDefense), 0);
-        if (currHealth < 0)
+        if (currHealth < 0 && isAlive)
         {
             OnDead();
         }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
+        else
         {
-            GameManager.instance.player.TakeDamage(baseDamage);
+            animator.SetTrigger("OnHurt");
+            audioSource.Play();
         }
     }
+
+    IEnumerator TryAttack()
+    {
+        animator.SetTrigger("OnAttack");
+        yield return new WaitForSeconds(0.75f);
+        if (disance < meleeRange)
+        {
+            attack();
+        }
+        isAttacking = false;
+    }
+
+    public override void attack()
+    {
+        GameManager.instance.player.TakeDamage(actualDamage);
+    }
+
 
 }

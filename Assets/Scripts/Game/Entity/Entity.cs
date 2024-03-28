@@ -29,6 +29,17 @@ public abstract class Entity: MonoBehaviour
     [Header("SpriteRenderer")]
     public SpriteRenderer sprite;
 
+    protected virtual void Awake()
+    {
+        animator = GetComponent<Animator>();
+        sprite = GetComponent<SpriteRenderer>();
+    }
+
+    protected virtual void Update()
+    {
+        sprite.sortingOrder = Mathf.RoundToInt(transform.position.y * -100);
+    }
+
     public abstract void Move();
     public abstract void TakeDamage(float damage);
 

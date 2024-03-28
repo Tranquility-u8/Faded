@@ -6,13 +6,14 @@ public class Barrel : Obstacle
 {
     [SerializeField] private CoinPool coinPool;
 
-    private void Awake()
+    protected override void Awake()
     {
-        animator = GetComponent<Animator>();
+        base.Awake();
     }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         SetUpBarrel();
     }
 
